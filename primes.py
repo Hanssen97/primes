@@ -10,11 +10,11 @@ t      = ('{0}To   > {1}'.format(BLUE, END))
 
 
 
-def parseArgs(args):
-    if (args[0] < 0 or args[1] < 0):
+def parseArgs(start, end):
+    if (start < 0 or end < 0):
         print '{0}\nInterval cannot be negative'.format(RED);
         return False;
-    elif (args[0] > args[1]):
+    elif (start > end):
         print '{0}\nThe smallest number should be placed first'.format(RED);
         return False;
 
@@ -59,16 +59,15 @@ def setup():
 def extendBase(end):
     start = base[len(base)-1] + 2; # +2 since list is only odd numbers.
 
-    base.extend(findPrimes([start, end]));
+    base.extend(findPrimes(start, end));
     updateBaseFile(base);
 
-    searcher.stdin.write('0\n'); # Updates external searcher.out process
+    searcher.stdin.write('0\n'); # Updates prime base in external searcher.out
 
 
 
-def findPrimes(interval):
-    curr    = start = interval[0];
-    end     = interval[1];
+def findPrimes(start, end):
+    curr    = start;
     ceil    = int(math.ceil(math.sqrt(end)));
     result  = [];
     tick    = 0;
@@ -167,22 +166,20 @@ while True:
 
 
     elif choice == '1': #------------------------------------------------------
-        interval = [0,0];
-
         print("\nFind primes: ");
-        interval[0] = int(raw_input(f));
-        interval[1] = int(raw_input(t));
+        start = int(raw_input(f));
+        end = int(raw_input(t));
 
-        if (parseArgs(interval)):
+        if (parseArgs(start, end)):
             startTime = time.time();
 
-            ceil = int(math.ceil(math.sqrt(interval[1])));
+            ceil = int(math.ceil(math.sqrt(end)));
             if (ceil > base[len(base)-1]):
                 print '\nExtending prime base...';
                 extendBase(ceil+int(math.ceil(math.sqrt(ceil))));
 
             print '\nSearching for prime numbers...';
-            primes = findPrimes(interval);
+            primes = findPrimes(start, end);
             endTime = time.time();
 
             m, s = divmod(round(endTime-startTime), 60);
