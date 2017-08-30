@@ -23,9 +23,9 @@ def parseArgs(start, end):
 
 
 def updateBaseFromFile():
-    basefile = open("base.txt", "r");
-    text = basefile.read();
-    global base; base = map(int, text.split(','));
+    basefile            = open("base.txt", "r");
+    text                = basefile.read();
+    global base; base   = map(int, text.split(','));
 
 
 
@@ -161,14 +161,15 @@ while True:
     optionBanner();
     choice = raw_input(header)
 
-    if choice.upper() == 'E' or choice.upper() == 'EXIT':#---------------------
+
+    if choice.upper() == 'E' or choice.upper() == 'EXIT': #--------------------
         break;
 
 
     elif choice == '1': #------------------------------------------------------
         print("\nFind primes: ");
-        start = int(raw_input(f));
-        end = int(raw_input(t));
+        start   = int(raw_input(f));
+        end     = int(raw_input(t));
 
         if (parseArgs(start, end)):
             startTime = time.time();
@@ -180,8 +181,8 @@ while True:
 
             print '\nSearching for prime numbers...';
             primes = findPrimes(start, end);
-            endTime = time.time();
 
+            endTime = time.time();
             m, s = divmod(round(endTime-startTime), 60);
             h, m = divmod(m, 60);
 
