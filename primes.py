@@ -42,7 +42,7 @@ def setup():
         subprocess.call(["g++", "-o", "searcher.out", "searcher.cpp"]);
 
     if (not os.path.exists("base.txt")):
-        updateBaseFile( base );
+        updateBaseFile(base);
     else:
         updateBaseFromFile();
 
@@ -108,8 +108,9 @@ def search(number):
 def printPrimes(primes):
     print '{0}'.format(GREEN);
     for prime in primes:
-        time.sleep(0.00025)
-        print(prime)
+        time.sleep(0.00025);
+        print(prime);
+
     print '{0}'.format(END);
 
 
@@ -139,32 +140,30 @@ def filePrimes(primes):
 
 def optionBanner():
     print('\n{0}Choose option from menu:\n'.format(END))
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\t{0}[{1}1{2}]{3} Find primes\n').format(YELLOW, BLUE, YELLOW, WHITE)
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\t{0}[{1}2{2}]{3} Print primes').format(YELLOW, BLUE, YELLOW, WHITE)
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\t{0}[{1}3{2}]{3} Save primes').format(YELLOW, BLUE, YELLOW, WHITE)
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\n\t{0}[{1}M{2}]{3} Clear memory').format(YELLOW, BLUE, YELLOW, WHITE)
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\t{0}[{1}C{2}]{3} Clear screen').format(YELLOW, BLUE, YELLOW, WHITE)
-    time.sleep(0.1)
+    time.sleep(0.02)
     print('\t{0}[{1}E{2}]{3} Exit Program\n').format(YELLOW, BLUE, YELLOW, WHITE)
 
 
 
-
+# MAIN ------------------------------------------------------------------------
 setup();
 
 while True:
     optionBanner();
     choice = raw_input(header)
 
-
     if choice.upper() == 'E' or choice.upper() == 'EXIT': #--------------------
         break;
-
 
     elif choice == '1': #------------------------------------------------------
         print("\nFind primes: ");
@@ -182,8 +181,7 @@ while True:
             print '\nSearching for prime numbers...';
             primes = findPrimes(start, end);
 
-            endTime = time.time();
-            m, s = divmod(round(endTime-startTime), 60);
+            m, s = divmod(round(time.time() - startTime), 60);
             h, m = divmod(m, 60);
 
             print '\aFound {0}{1} {2}primes in {0}{4}{2}h {0}{5}{2}m {0}{6}{2}s{3}'.format(YELLOW, len(primes), WHITE, END, int(h), int(m), int(s));
