@@ -146,7 +146,7 @@ def optionBanner():
     time.sleep(0.1)
     print('\t{0}[{1}3{2}]{3} Save primes').format(YELLOW, BLUE, YELLOW, WHITE)
     time.sleep(0.1)
-    print('\n\t{0}[{1}M{2}]{3} Clear cache').format(YELLOW, BLUE, YELLOW, WHITE)
+    print('\n\t{0}[{1}M{2}]{3} Clear memory').format(YELLOW, BLUE, YELLOW, WHITE)
     time.sleep(0.1)
     print('\t{0}[{1}C{2}]{3} Clear screen').format(YELLOW, BLUE, YELLOW, WHITE)
     time.sleep(0.1)
