@@ -1,5 +1,5 @@
 # primes
-An over the top prime generator written in C++
+An over the top brute-force prime generator written in C++
 
 ### how to:
 - compile and run: **make**

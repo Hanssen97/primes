@@ -303,12 +303,9 @@ std::vector<size_t> getPrimes(size_t start, size_t end) {
     ++curr;
   }
 
-  while(curr < end) {
+  for(; curr < end; curr+=2, ++tick) {
     if ( search(curr) )     result.push_back(curr);
-
     if ( tick % step == 0 ) io::progressBar(start, end, curr);
-
-    curr += 2; tick++;
   }
   io::progressBar(0, 100, 100);
 
@@ -342,9 +339,8 @@ void updatePrimesFile() {
   std::cout << io::colors::white << "\nSaving primes...\n";
 
   for (size_t i = 0; i < end; ++i) {
-    if (i % step == 0) {
-      io::progressBar(0, end, i);
-    }
+    if (i % step == 0) io::progressBar(0, end, i);
+
     file << global::primes.at(i) << " ";
   }
   io::progressBar(0, 100, 100);
@@ -384,7 +380,6 @@ void removeFile(std::string filename) {
 
     std::cout << io::colors::yellow << "\t" << filename << "\n";
   }
-
 }
 
 
