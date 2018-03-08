@@ -11,3 +11,6 @@ compile:
 
 run:
 	./primes.out
+
+clean:
+	rm -rf primes.out base.txt primes.txt
