@@ -11,7 +11,6 @@ import (
 
 type Instance struct {
 	base []int
-	baseMu sync.Mutex
 	Program *cli.Instance
 	numCPUs int
 }
