@@ -1,13 +1,9 @@
 # primes
 
-An over the top brute-force prime generator written in Go
+An over-the-top prime number generator in Go
 
 ## How to
 
-- compile and run: **make**
-
-- compile: **make compile**
-
-- run: **make run**
+- run: **make** or **make run**
 
 - clean: **make clean**
