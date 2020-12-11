@@ -69,12 +69,12 @@ func (p *Instance) isPrime(number int) bool {
 		return true
 	}
 	
-	cap := calculateThreshold(number)
+	threshold := calculateThreshold(number)
 	for _, compliment := range p.base {
 		if isDivisible(number, compliment) {
 			return false
 		}
-		if compliment > cap {
+		if compliment > threshold {
 			return true
 		}
 	}
