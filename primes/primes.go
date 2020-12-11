@@ -31,7 +31,7 @@ func (p *Instance) findPrimes(start, end int) (result []int) {
 	if (start < 3) {
 		result = []int{2};
 		start = 3; 
-	} else if start % 2 == 0 {
+	} else if isDivisible(start, 2) {
 		start++;
 	}
 
@@ -95,6 +95,6 @@ func calculateThreshold(number int) int {
 }
 
 func isDivisible(a, b int) bool {
-	divided := float64(a) / float64(b)
-	return divided == float64(int64(divided))
+	quotient := float64(a) / float64(b)
+	return quotient == math.Trunc(quotient)
 }
