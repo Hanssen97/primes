@@ -72,8 +72,7 @@ func (p *Instance) isPrime(number int) bool {
 	cap := int(math.Ceil(math.Sqrt(float64(number))));
 	for i := 0; i < len(p.base); i++ {
 		compliment := p.base[i]
-		divided := float64(number) / float64(compliment)
-		if divided == float64(int64(divided)) {
+		if isDivisible(number, compliment) {
 			return false
 		}
 		if compliment > cap {
@@ -93,4 +92,9 @@ func (p *Instance) extendBase(end int) {
 
 func calculateThreshold(number int) int {
 	return int(math.Ceil(math.Sqrt(float64(number))))
+}
+
+func isDivisible(a, b int) bool {
+	divided := float64(a) / float64(b)
+	return divided == float64(int64(divided))
 }
