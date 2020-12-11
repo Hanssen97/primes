@@ -70,8 +70,7 @@ func (p *Instance) isPrime(number int) bool {
 	}
 	
 	cap := int(math.Ceil(math.Sqrt(float64(number))));
-	for i := 0; i < len(p.base); i++ {
-		compliment := p.base[i]
+	for _, compliment := range p.base {
 		if isDivisible(number, compliment) {
 			return false
 		}
