@@ -72,7 +72,8 @@ func (p *Instance) isPrime(number int) bool {
 	cap := int(math.Ceil(math.Sqrt(float64(number))));
 	for i := 0; i < len(p.base); i++ {
 		compliment := p.base[i]
-		if number % compliment == 0 {
+		divided := float64(number) / float64(compliment)
+		if divided == float64(int64(divided)) {
 			return false
 		}
 		if compliment > cap {

@@ -1,5 +1,6 @@
 package main
 
+
 import (
 	"github.com/jorgenhanssen/primes/cli"
 	p "github.com/jorgenhanssen/primes/primes"
