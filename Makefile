@@ -3,3 +3,6 @@ run:
 
 clean:
 	rm -rf primes.txt
+
+test:
+	go test -v ./...
