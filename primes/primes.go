@@ -22,7 +22,7 @@ func New() *Instance {
 	}
 }
 
-func (p *Instance) findPrimes(start, end int) (result []int) {
+func (p *Instance) FindPrimes(start, end int) (result []int) {
 	threshold := calculateThreshold(end)
 	if (threshold > p.base[len(p.base)-1]) {
     	p.extendBase(threshold);
@@ -84,7 +84,7 @@ func (p *Instance) isPrime(number int) bool {
 
 func (p *Instance) extendBase(end int) {
 	start := p.base[len(p.base)-1];
-	extension := p.findPrimes(start + 2, end + 2)
+	extension := p.FindPrimes(start + 2, end + 2)
 	p.base = append(p.base, extension...)
 }
 

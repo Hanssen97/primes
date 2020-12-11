@@ -18,7 +18,7 @@ func (p *Instance) Find(program *cli.Instance) {
 	end := program.InputInt("To")
 
 	startedAt := time.Now()
-	primes = p.findPrimes(start, end)
+	primes = p.FindPrimes(start, end)
 	program.Write("\nFound %s primes in %s", 
 		cli.ColorGreen(len(primes)), 
 		cli.ColorYellow(utils.PrettyDuration(time.Since(startedAt))))

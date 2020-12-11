@@ -3,7 +3,7 @@ package primes
 import "testing"
 
 func testNumPrimesInRange(p *Instance, t *testing.T, start, end, expected int) {
-	numPrimes := len(p.findPrimes(start, end))
+	numPrimes := len(p.FindPrimes(start, end))
 	if numPrimes != expected {
 		t.Errorf("[%d - %d] expected %d; found %d", start, end, expected, numPrimes)
 	} else {
