@@ -9,6 +9,10 @@ import (
 	"github.com/jorgenhanssen/primes/cli"
 )
 
+// MaxSafeInt (2^53) is the largest integer accuratly
+// represented by a float64.
+const MaxSafeInt = 9007199254740992
+
 type Instance struct {
 	base []int
 	Program *cli.Instance
@@ -94,6 +98,13 @@ func calculateThreshold(number int) int {
 }
 
 func isDivisible(a, b int) bool {
-	quotient := float64(a) / float64(b)
-	return quotient == math.Trunc(quotient)
+	if a < MaxSafeInt {
+		// Use this faster method when the value can be
+		// represented accuratly as float
+		quotient := float64(a) / float64(b)
+		return quotient == math.Trunc(quotient)
+	}
+
+	// Accurate but slower approach for larger integers
+	return a % b == 0
 }
