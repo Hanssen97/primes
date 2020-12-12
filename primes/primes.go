@@ -3,7 +3,6 @@ package primes
 import (
 	"math"
 	"runtime"
-	"sort"
 	"sync"
 
 	"github.com/jorgenhanssen/primes/cli"
@@ -55,16 +54,16 @@ func (p *Instance) FindPrimes(start, end int) (result []int) {
 					_result = append(_result, num)
 				}
 			}
-
+			
 			mu.Lock()
-			result = append(result, _result...)
+			// _result is sorted, so we can use merge sort's merge
+			// to efficiently keep the main result sorted.
+			result = Merge(result, _result)
 			mu.Unlock()
 		}(i)
 	}
 
 	wg.Wait()
-	sort.Ints(result)
-
 	return
 }
 
