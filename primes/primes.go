@@ -67,21 +67,17 @@ func (p *Instance) FindPrimes(start, end int) (result []int) {
 	return
 }
 
-func (p *Instance) isPrime(number int) bool {
-	if number == 3 {
-		return true
-	}
-	
+func (p *Instance) isPrime(number int) bool {	
 	threshold := calculateThreshold(number)
 	for _, compliment := range p.base {
 		if isDivisible(number, compliment) {
 			return false
 		}
-		if compliment > threshold {
+		if compliment >= threshold {
 			return true
 		}
 	}
-
+	
 	return true;
 }
 
